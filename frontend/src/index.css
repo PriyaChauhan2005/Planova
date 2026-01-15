@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@theme {
+  --color-planova-mint: #86D3B4;
+  --color-planova-dark: #1F2937;
+  --color-planova-soft: #F9FAFB;
+  --font-jakarta: "Plus Jakarta Sans", sans-serif;
+}
