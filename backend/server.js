@@ -1,43 +1,42 @@
-// 1. MUST BE THE VERY FIRST LINE
 require('dotenv').config(); 
-
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+// Route Imports
 const taskRoutes = require('./routes/taskRoutes');
 const userRoutes = require('./routes/userRoutes');
 const reminderRoutes = require('./routes/reminderRoutes');
 
-// 2. FAIL-SAFE CHECK
-if (!process.env.MONGO_URI) {
-  console.error("❌ ERROR: MONGO_URI is not defined in the .env file.");
-  console.error("Check if your .env file exists in the /backend folder.");
-  process.exit(1);
-}
-
 const app = express();
 
-app.use(cors());
+// 1. UPDATE CORS: Replace the URL with your actual Vercel frontend URL
+app.use(cors({
+  origin: ["http://localhost:5173", "https://your-planova-frontend.vercel.app"],
+  methods: ["GET", "POST", "PATCH", "DELETE"],
+  credentials: true
+}));
+
 app.use(express.json());
 
-// 3. DATABASE CONNECTION
+// 2. ATLAS CONNECTION
 const connectDB = async () => {
   try {
-    // We now know for sure process.env.MONGO_URI is a string here
-    const conn = await mongoose.connect(process.env.MONGO_URI);
-    console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
+    // Ensure you set MONGODB_URI in Render's dashboard environment variables
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log("✅ Connected to MongoDB Atlas");
   } catch (error) {
-    console.error(`❌ MongoDB Connection Error: ${error.message}`);
-    process.exit(1);
+    console.error("❌ MongoDB Error:", error.message);
   }
 };
-
 connectDB();
+
+// 3. HEALTH CHECK (Prevents the 404 error on the root URL)
+app.get('/', (req, res) => res.send("Planova API is live!"));
 
 app.use('/api/tasks', taskRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/reminders', reminderRoutes);
 
-const PORT = 5000;
-app.listen(PORT, () => console.log(`🚀 Planova Server running on port ${PORT}`));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`🚀 Server on port ${PORT}`));

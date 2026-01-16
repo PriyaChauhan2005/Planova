@@ -1,24 +1,28 @@
 import axios from 'axios';
 
+// The Production URL from your Render Dashboard
+const RENDER_URL = 'https://planova-backend-4f7t.onrender.com/api';
+
 const API = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: RENDER_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  }
 });
 
-// User & Streak Services
-export const getUserData = (clerkId) => API.get(`/users/${clerkId}`);
-export const updateStreak = (clerkId) => API.patch(`/users/${clerkId}/streak`);
-
-// Task Services
+// Helper functions for the project
 export const fetchTasks = (userId) => API.get(`/tasks/${userId}`);
-export const fetchCarriedTasks = (userId) => API.get(`/tasks/${userId}/carried`);
 export const addTask = (taskData) => API.post('/tasks', taskData);
-export const toggleTaskStatus = (id) => API.patch(`/tasks/${id}/toggle`);
 export const updateTask = (id, updates) => API.patch(`/tasks/${id}`, updates);
 export const deleteTask = (id) => API.delete(`/tasks/${id}`);
+export const toggleTask = (id) => API.patch(`/tasks/${id}/toggle`);
 
-// Reminder Services
+export const fetchCarriedTasks = (userId) => API.get(`/tasks/${userId}/carried`);
+
+export const fetchUser = (clerkId) => API.get(`/users/${clerkId}`);
+
 export const fetchReminders = (userId) => API.get(`/reminders/${userId}`);
-export const addReminder = (reminderData) => API.post('/reminders/add', reminderData);
+export const addReminder = (data) => API.post('/reminders/add', data);
 export const deleteReminder = (id) => API.delete(`/reminders/${id}`);
 
 export default API;
