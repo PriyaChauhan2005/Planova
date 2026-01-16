@@ -24,5 +24,7 @@ export const fetchUser = (clerkId) => API.get(`/users/${clerkId}`);
 export const fetchReminders = (userId) => API.get(`/reminders/${userId}`);
 export const addReminder = (data) => API.post('/reminders/add', data);
 export const deleteReminder = (id) => API.delete(`/reminders/${id}`);
+export const getUserData = fetchUser;
+export const toggleTaskStatus = toggleTask;
 
 export default API;
