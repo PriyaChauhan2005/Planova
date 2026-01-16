@@ -1,7 +1,11 @@
 🚀 Planova: Student Productivity Reimagined
-Planova is a full-stack student productivity application designed to help students manage tasks, track streaks, and plan their academic schedules with ease. Built with the MERN stack and integrated with Clerk for secure authentication, it offers a stylized, aesthetic interface for modern learners.
+Planova is a full-stack student productivity application. It combines a sleek, minimalist UI with  backend logic to track tasks, maintain streaks, and manage academic deadlines. Built with the MERN stack and integrated with Clerk for secure authentication, it offers a stylized, aesthetic interface for modern learners.
 
-✨ Features
+Link: https://planova-iota.vercel.app/
+
+
+✨ Features:
+
 Smart Dashboard: Real-time overview of your daily tasks, deadlines, and current productivity streak.
 
 Planning Station: Dedicated space to organize upcoming tasks with specialized filtering for "Tomorrow's List".
@@ -13,23 +17,20 @@ Deadlines & Reminders: integrated system to ensure important academic dates are 
 User Authentication: Secure sign-in and sign-up powered by Clerk, supporting social logins and student profiles.
 
 🛠️ Tech Stack
-Frontend
+
+Frontend:
 React.js: Functional components and Hooks for dynamic UI.
-
 Tailwind CSS: Stylized, responsive design with custom aesthetic themes.
-
 Lucide React: For high-quality, lightweight iconography.
-
 Axios: For structured API communication with the backend.
+
 
 Backend
 Node.js & Express: Scalable server-side logic and RESTful API architecture.
-
 MongoDB Atlas: Cloud-hosted NoSQL database for flexible data modeling.
-
 Mongoose: Schema-based solution for modeling application data.
-
 Clerk: Industry-standard authentication and user management.
+
 
 📂 Project Structure
 
