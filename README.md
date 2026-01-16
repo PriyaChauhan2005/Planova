@@ -32,23 +32,6 @@ Mongoose: Schema-based solution for modeling application data.
 Clerk: Industry-standard authentication and user management.
 
 
-📂 Project Structure
-
-Planova/
-├── backend/
-│   ├── models/         # Mongoose schemas (Task, User, Reminder)
-│   ├── routes/         # Express API routes
-│   ├── .env            # Environment variables (Atlas URI)
-│   └── server.js       # Main entry point & Atlas connection
-├── frontend/
-│   ├── src/
-│   │   ├── components/ # Header, Sidebar, TaskContainer
-│   │   ├── context/    # UserContext for global state
-│   │   ├── services/   # Axios API configurations
-│   │   └── pages/      # Dashboard, Plan, Settings
-│   └── main.jsx        # ClerkProvider setup
-
-
 🚀 Deployment
 
 Planova is architected for modern cloud deployment:
